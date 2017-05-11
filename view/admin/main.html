@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title></title>
+</head>
+<style>
+	.title{
+		font-size: 1.2em;
+		color: #413843;
+		font-weight: bold;
+	}
+	body,a{
+		color: #000;
+	}
+</style>
+<body style="background:#e7e8f1">
+<table class="table"> 
+	<tr class="info">
+		<td colspan="4" class="title">图书信息</td>
+	</tr>
+	<tr>
+		<td width="25%"><a href="booklist.php?sort=all">总图书种类:</a></td>
+		<td width="25%"><strong><?php echo count($allNum);?></strong></td>
+		<td width="25%"><a href="booklist.php?sort=rare">库存警告图书种类:</a></td>
+		<td width="25%"><strong><?php echo count($rare);?></strong></td>
+	</tr>
+	<tr>
+		<td><a href="booklist.php?sort=hot">热销图书种类:</a></td>
+		<td ><strong><?php echo count($hot);?></strong></td>
+		<td><a href="booklist.php?sort=best">精品图书种类:</a></td>
+		<td ><strong><?php echo count($best);?></strong></td>
+	</tr>
+</table>
+
+<table class="table"> 
+	<tr class="info">
+		<td colspan="4" class="title">系统信息</td>
+	</tr>
+	<tr>
+		<td width="25%">后台语言:</td>
+		<td width="25%">PHP</td>
+		<td width="25%">GD版本:</td>
+		<td width="25%">GD2</td>
+	</tr>
+	<tr>
+		<td>数据库:</td>
+		<td>SQLSever</td>
+		<td>文件上传最大大小:</td>
+		<td>2M</td>
+	</tr>
+	<tr>
+		<td>时区设置:</td>
+		<td>PRC</td>
+		<td>编码:</td>
+		<td>UTF8</td>
+	</tr>
+</table>
+</body>
+</html>

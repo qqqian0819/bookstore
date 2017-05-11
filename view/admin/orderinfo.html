@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title>订单详情</title>
+<style>
+	.title{
+		font-size: 1.2em;
+		color: #413843;
+		font-weight: bold;
+	}
+	a{
+		color:#000;
+		text-decoration: none;
+	}
+	a:hover{
+		color: red;
+	}
+</style>
+</head>
+<body>
+<h1 class="text-center">订单详情</h1>
+<table class="table">
+	<tr class="info">
+		<td colspan="4" class="title">基本信息</td>
+	</tr>
+	<tr>
+		<td width="15%">订单号:</td>
+		<td width="35%"><?php echo $info['order_sn'] ;?></td>
+		<td width="15%">收件人姓名:</td>
+		<td width="35%"><?php echo $info['reciver'] ;?></td>
+	</tr>
+	<tr>
+		<td><a href="userinfo.php?user_id=<?php echo $info['user_id'] ;?>">
+			用户:</a></td>
+		<td><a href="userinfo.php?user_id=<?php echo $info['user_id'] ;?>">
+			<?php echo $info['username'] ;?></a></td>
+		<td>配送地址:</td>
+		<td><?php echo $info['address'] ;?></td>
+	</tr>
+	<tr>
+		<td>收件人邮箱：</td>
+		<td><?php echo $info['email'] ;?></td>
+		<td>收件人电话:</td>
+		<td><?php echo $info['tel'] ;?></td>
+	</tr>
+	<tr>
+		<td>总金额：</td>
+		<td><?php echo $info['order_amount'] ;?></td>
+		<td>下单时间:</td>
+		<td><?php echo date('Y-m-d H:i:s',$info['add_time']) ;?></td>
+	</tr>
+</table>
+<table class="table table-hover" >	
+	<tr class="info">
+		<td colspan="6" class="title">商品信息</td>
+	</tr>
+	<tr class="active">
+		<td width="15%">书籍货号</td>
+		<td width="25%">书名</td>
+		<td width="25%">作者</td>
+		<td width="10%">单价</td>
+		<td width="10%">数量</td>
+		<td width="15%">小计</td>
+	</tr>
+	<?php foreach($infolist as $v) { ?>
+	<tr>
+		<td><a href="bookedit.php?book_id=<?php echo $v['book_id'];?>">
+			<?php echo $v['book_sn'];?></a>
+		</td>
+		<td><?php echo $v['book_name'];?></td>
+		<td><?php echo $v['author'];?></td>
+		<td><?php echo $v['shop_price'];?></td>
+		<td><?php echo $v['book_number'];?></td>
+		<td><?php echo $v['subtotal'];?></td>
+	</tr>
+	<?php } ?>
+</table>
+</body>
+</html>

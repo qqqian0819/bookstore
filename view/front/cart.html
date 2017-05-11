@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../view/front/css/cart.css">
+<title>购物车</title>
+</head>
+
+<body>
+<!-- bar -->
+<nav class="navbar navbar-default ">
+    <div class="navbar-header">
+            <a class="navbar-brand"  id="logo" href="#">
+                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+            </a>
+        </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
+            <li  class="active"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a></li> 
+            <li><a href="user.php"><span class="glyphicon glyphicon-user"></span>个人中心</a></li> 
+            <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li> </li>
+        </ul>
+    </div>
+</nav>  
+<!-- 书店搜索框 -->
+<div class="container">
+    <div id="title">
+    	  <span id="wel">书店</span>
+    </div>
+    <div id="search">
+        <form>
+            <div>
+                <div class="input-group">
+                    <input type="text" name="searchcontent" placeholder="输入书名作者等信息快速搜索"  class="form-control input-lg">
+                    <div class="input-group-addon">
+                        <a href="#">
+                            <span class="glyphicon">
+                                <input id="btn" type="submit" name="search" value="搜索" style="border:0px;">
+                            </span>
+                        </a>
+                    </div>              
+                </div>
+            </div>
+            <div id="keywods">
+                &nbsp;&nbsp;热门关键字：
+                <a href="#">追风筝的人</a>,&nbsp;&nbsp;
+                <a href="#">计算机</a>,&nbsp;&nbsp;
+                <a href="#">贾平凹</a>,&nbsp;&nbsp;
+                <a href="#">老舍</a>,&nbsp;&nbsp;
+                <a href="#">励志</a>&nbsp;&nbsp;
+            </div>
+        </form>
+    </div>
+</div>
+<!-- mian -->
+<div class="container">
+    <!--面包屑导航 -->
+    <div style="clear:both">
+        <ol class="breadcrumb">
+            &nbsp;&nbsp;&nbsp;&nbsp;当前位置：
+            <li><a href="index.php">首页</a></li>
+            <li class="active">购物车</li>
+        </ol>
+    </div>
+    <!-- 购物列表 -->
+    <div id="shop_cart">
+        <table class="table table-hover">
+            <tr  style="background:#64a7af;">
+                <td>书名</td>
+                <td>作者</td>
+                <td>本店价</td>
+                <td>市场价</td>
+                <td>数量</td>
+                <td>小计</td>
+                <td>操作</td>
+            </tr>
+            <?php foreach($items as $item) { ?>
+            <tr>
+                <td id="cart_name">
+                    <a class="f6" target="_blank" href="detail.php?book_id=<?php echo $k; ?>">
+                        <?php echo $item['name'];?>
+                    </a>
+                </td>
+                <td><?php echo $item['author'];?></td>
+                <td><?php echo $item['price'];?></td>
+                <td style="text-decoration:line-through; ">￥<?php echo $item['market_price'];?></td>
+                <td><?php echo $item['num'];?></td>
+                <td>￥<?php echo $item['num']*$item['price'];?></td>
+                <td><a href="" title="删除"><span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+            <?php } ?>
+        </table>
+        <div style="background:#eee;height:4em;">
+            <div style="padding:1em 3em;float:left">
+                金额￥<span class="money"><?php echo $total;?></span>元，比市场价节约了￥<span class="money"><?php echo $discount;?></span>元(<span class="money"><?php echo $rate;?>%</span>)。
+            </div>
+            <div style="float:right;padding:1em 2em ">
+                <a href="column.php"><img src="../view/front/image/continue.gif" alt="继续购物"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="cart.php?act=clear" class="btn btn-success">清空购物车</a>                
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="cart.php?act=tijiao"><img src="../view/front/image/checkout.gif" alt="结算"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include(ROOT . 'view/footer.html'); ?> 
+
+</body>
+<script src="../../lib/bootstrap/js/jquery.min.js"></script>
+<script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script>
+// 数量加减
+$(document).ready(function(){
+    //加的效果
+    $(".add").click(function(){
+        var n=$(this).prev().val();
+        var num=parseInt(n)+1;
+        if(num==0){ return;}
+        $(this).prev().val(num);
+        document.getElementById('total').value=num* <?php echo $g['shop_price'];?>;
+    });
+    //减的效果
+    $(".jian").click(function(){
+        var n=$(this).next().val();
+        var num=parseInt(n)-1;
+        if(num==0){ return}
+        $(this).next().val(num);
+    document.getElementById('total').value=num* <?php echo $g['shop_price'];?>;
+    });
+})
+</script>
+</html>

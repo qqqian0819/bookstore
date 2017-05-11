@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title>用户详细信息</title>
+<style>
+    td{
+      border:1px solid #eee;
+    }
+    table{
+    background: #fff;
+  }
+</style>
+</head>
+<body style="background:#b5d6e3;">
+<h1 class="text-center">用户详细信息</h1>
+<table class="table">
+		<tr class="info"><td colspan="4">基本信息</td></tr>
+        <tr class="active">
+            <td width="20%">用户id</td>
+            <td width="20%">用户名</td>
+            <td width="30%">email</td>
+            <td width="30%">注册时间</td>
+        </tr>
+        <tr align="left" class="0" id="0_1" id = 'tr_4'>
+            <td align="left" class="first-cell" style = 'padding-left="1"'>
+                <?php echo $info['user_id'];?>
+            </td>
+            <td><?php echo $info['username'];?></td>
+            <td><?php echo $info['email'];?></td>
+            <td>         
+                <?php echo date('Y-m-d',$info['regtime']);?>        
+            </td>
+        </tr>
+        <tr class="info"><td colspan="4">历史订单</td></tr>
+        <tr class="active">
+        	<td width="20%">订单号</td>
+            <td width="20%">总金额</td>
+            <td width="30%">收件人</td>
+            <td width="30%">下单时间时间</td>
+        </tr>
+        <?php foreach($infolist as $v) { ?>
+        <tr align="left" class="0" id="0_1" id = 'tr_4'>
+            <td align="left" class="first-cell" style = 'padding-left="1"'>
+                <a href="orderinfo.php?id=<?php echo $v['order_id'];?>">
+                <?php echo $v['order_sn'];?></a>
+            </td>
+            <td><?php echo $v['order_amount'];?></td>
+            <td><?php echo $v['reciver'];?></td>
+            <td><?php echo date('Y-m-d',$v['add_time']);?>  </td>
+        </tr>
+        <?php } ?>
+        <tr class="info"><td colspan="4">留言记录</td></tr>
+        <tr>
+            <td>书名</td>
+            <td>作者</td>
+            <td>内容</td>
+            <td>时间</td>
+        </tr>
+        <?php foreach ($messlist as $m){?>
+        <tr>
+            <td><a href="bookedit.php?book_id=<?php echo $m['book_id'];?>">
+                <?php echo $m['book_name'];?></a>
+            </td>
+            <td><?php echo $m['author'];?></td>
+            <td><?php echo $m['content'];?></td>
+            <td><?php echo date('Y-m-d H:i:s',$m['times']);?></td>
+        </tr>
+    
+
+        <?php } ?>
+</table>
+<br/>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../view/front/css/order.css">
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/htmleaf-demo.css">
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/jquery.eeyellow.Timeline.css" />
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap-float-label.css"/>
+<title>注册</title>
+</head>
+<style>
+    body{
+        background: #fff;
+    }
+</style>
+<body>
+<!-- bar -->
+<nav class="navbar navbar-default ">
+    <div class="navbar-header">
+            <a class="navbar-brand"  id="logo" href="#">
+                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+            </a>
+        </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
+            <li><a href="log_in.php"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
+            <li  class="active"><a href="reg.php"><span class="glyphicon glyphicon-edit"></span> 注册</a></li>
+        </ul>
+    </div>
+</nav>  
+<!-- 注册框 -->
+<div style="margin-top:3em;">
+    <div class="htmleaf-container" id="contact">
+        <div class="form-container" >
+            <form class="well center-block" style="max-width: 35rem;" action="regAct.php" method="post" name="reg" >
+                <legend class="text-center">注册</legend>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">用户名</span>
+                    <span class="has-float-label">
+                        <input class="form-control" name="username" id="username" type="text" placeholder="用户名在在2-10范围之间"/>
+                        <label for="name">Name</label>
+                    </span>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">邮箱</span>
+                    <span class="has-float-label">
+                        <input class="form-control" name="email" id="email" type="text" placeholder="qqqian0819@gmail.com"/>
+                        <label for="email'">Email</label>
+                    </span>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">密码</span>
+                    <span class="has-float-label">
+                        <input class="form-control" name="passwd" id="passwd" type="password" placeholder="密码不能少于4位"/>
+                        <label for="password">Password</label>
+                    </span>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">确认密码</span>
+                    <span class="has-float-label">
+                        <input class="form-control" name="repasswd" id="repasswd" type="password" placeholder="*******"/>
+                        <label for="repass">Confirm password</label>
+                    </span>
+                </div>
+
+
+                <div class="form-group input-group">
+                    <span class="input-group-addon">验证码</span>
+                    <span class="has-float-label">
+                        <input class="form-control" name="verification" id="verification" type="text" placeholder="4为验证码"/>
+                        <label for="verification">verification</label>
+                    </span>
+                </div>
+                <div class="text-center" style="margin-bottom:1em">
+                    <img src="../tool/cap.php" alt="">                     
+                    <a class="btn btn-sm" id="cap" >看不清换一张</a>
+                </div>
+
+
+                <input class="btn btn-success btn-block" id="sub" type="submit" value="免费注册" onClick="return check(reg)">               
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php include(ROOT . 'view/footer.html'); ?> 
+
+
+</body>
+<script src="../lib/bootstrap/js/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script>
+     // submit
+    document.getElementById('sub').onmouseover=function(){
+        this.style.background='#fff';
+        this.style.color="green";
+    }
+    document.getElementById('sub').onmouseout=function(){
+        this.style.background='#98dda3';
+        this.style.color="#494a5f";
+    }
+    // 验证码
+    document.getElementById('cap').onclick=function(){
+        /*如果不强制的改变地址。则因为缓存无法重新加载05.php*/
+        document.getElementsByTagName('img')[1].src='../tool/cap.php?'+Math.random();
+    }
+
+    // 检测发布内容
+    function check(form){
+        if (form.username.value=="") {
+                alert("请输入用户名！");
+                form.username.focus();
+                return false;
+        }
+
+        if(form.email.value=="") {
+                alert("邮箱必填！");
+                form.email.focus();
+                return false;
+        }else {
+            var str1=form.email.value;
+            var expression1=/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            var objexp1=new RegExp(expression1);
+            if(objexp1.test(str1)==!true){
+                alert("请输入正确的邮箱");
+                form.email.focus();
+                return false;
+            }
+        }
+
+        if(form.passwd.value=="") {
+                alert("密码不能为空！");
+                form.passwd.focus();
+                return false;
+        }
+        if(form.passwd.value.length<4){
+                alert("密码至少4位！");
+                form.passwd.focus();
+                return false;
+        }
+        if(form.passwd.value!==form.repasswd.value) {
+                alert("密码不一致！");
+                form.passwd.focus();
+                return false;
+        }
+
+
+        
+    }
+</script>
+</html>

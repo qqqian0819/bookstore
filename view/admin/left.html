@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title></title>
+</head>
+<style>
+	.panel-heading {
+	    background: url(../view/admin/image/menu_plus.gif) no-repeat 4px 13px;
+	}	
+	.panel-title{
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+	.panel-body{
+		padding-left:3em;
+		background: url(../view/admin/image/menu_arrow.gif) no-repeat 2.2em 1.5em;
+
+	}
+	h3{
+		font-weight: bold;
+	}
+}
+</style>
+<body style="background:#b5d6e3;">
+<h3 class="text-center">菜单</h3>
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a href="#collapse1" data-toggle="collapse" data-parent="#accordion">图书管理</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+            	<a href="booklist.php?sort=all" target="main-frame">书籍列表</a>
+            </div>         
+            <div class="panel-body">
+            	<a href="catelist.php" target="main-frame">分类列表</a>
+            </div>
+            <div class="panel-body">
+            	<a href="bookadd.php" target="main-frame">添加书籍</a>
+            </div>
+            <div class="panel-body">
+            	<a href="cateadd.php" target="main-frame">添加分类</a>
+            </div>
+        </div>            
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a href="#collapse2" data-toggle="collapse" data-parent="#accordion">订单管理</a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+                <a href="orderlist.php" target="main-frame">订单列表</a>
+            </div> 
+        </div>            
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a href="#collapse3" data-toggle="collapse" data-parent="#accordion">会员管理</a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+            	<a href="userlist.php" target="main-frame">会员列表</a>
+            </div> 
+        </div>            
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a href="#collapse4" data-toggle="collapse" data-parent="#accordion">评论管理</a>
+            </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
+            <div class="panel-body">
+                <a href="messlist.php" target="main-frame">评论列表</a>
+            </div> 
+        </div>            
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a href="#collapse5" data-toggle="collapse" data-parent="#accordion">商品回收站</a>
+            </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse">
+            <div class="panel-body">
+            	<a href="booktrash.php?act=show" target="main-frame"">回收商品</a>
+            </div> 
+        </div>            
+    </div>
+</div>
+
+<script src="../lib/bootstrap/js/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+<script>
+
+</script>
+</html>

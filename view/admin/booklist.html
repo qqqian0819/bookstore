@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title>图书列表</title>
+</head>
+<style>
+	#form-div{
+		background: #98b7be;
+		height: 2.4em;
+	}
+	td{
+		border:1px solid #eee;
+	}
+	table{
+		background: #fff;
+	}
+	table>tbody>tr>td>a{
+		color: #000;
+	}
+	table>tbody>tr>td>a:hover{
+		color: red;
+		text-decoration: none;
+	}
+</style>
+<body style="background:#b5d6e3;">
+<h1 class="text-center">书籍列表</h1>
+	<div id="form-div">
+		<form action="booklist.php?sort=search" name="searchForm" method="post">
+            <img src="../view/admin/image/icon_search.gif" width="26" height="23" alt="搜索" />      
+            <select name="cat_id" onchange="window.location=this.value">
+            	<option value="0">书籍分类</option>
+                <?php foreach($catlist as $v) { ?>
+                <option value="booklist.php?sort=cat&cat_id=<?php echo $v['cat_id'];?>">	
+                	<?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;',$v['lev']),$v['cat_name']; ?> 
+                </option>
+                <?php } ?>
+            </select>
+            <select name="cat_id" onchange="window.location=this.value">
+            	<option value="0">作者</option>
+                <?php foreach($aulist as $au) { ?>
+                <option value="booklist.php?sort=author&author=<?php echo $au['author'];?>">	
+                	<?php echo $au['author']; ?> 
+                </option>
+                <?php } ?>
+            </select>
+			<select name="intro_type" onchange="window.location=this.value">
+				<option value="0">推荐</option>
+				<option value="booklist.php?sort=best">精品</option>
+				<option value="booklist.php?sort=hot">热销</option>
+			</select>     
+    		关键字 
+    		<input type="text" name="keyword" id="keyword" size="35" placeholder="输入书籍名称作者出版社等信息快速搜索" />
+    		<input type="submit" value=" 搜索" />
+  		</form>
+	</div>
+<table class="table table-hover">
+	<thead>
+		<tr class="info">
+			<td>书名</td>
+			<td>编号</td>
+			<td>货号</td>			
+			<td>作者</td>
+			<td>出版日期</td>
+			<td>出版社</td>
+			<td>市场价</td>
+			<td>网站价</td>
+			<td>精品</td>
+			<td>热销</td>
+			<td>库存</td>
+			<td>操作</td>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach($booklist as $g) { ?>
+		<tr>
+			<td><a href="bookedit.php?book_id=<?php echo $g['book_id'];?>"><?php echo $g['book_name'];?></a></td>
+			<td><?php echo $g['book_id'];?></td>
+			<td><?php echo $g['book_sn'];?></td>
+			<td><?php echo $g['author'];?></td>
+			<td><?php echo $g['pub_date'];?></td>
+			<td><?php echo $g['book_publish'];?></td>
+			<td><?php echo $g['market_price'];?></td>
+			<td><?php echo $g['shop_price'];?></td>
+			<td><?php  echo (($g['is_best']==1)?'<img src="../view/admin/image/yes.gif"  />':'');?></td>
+			<td><?php  echo (($g['is_hot']==1)?'<img src="../view/admin/image/yes.gif"  />':'');?></td>
+			<td><?php echo $g['book_number'];?></td>
+        	<td >      		
+      			<a href="bookedit.php?book_id=<?php echo $g['book_id'];?>" title="修改"><img src="../view/admin/image/icon_edit.gif" width="16" height="16" border="0" /></a>      
+      			<a href="booktrash.php?book_id=<?php echo $g['book_id'];?>"  title="回收站"><img src="../view/admin/image/icon_trash.gif" width="16" height="16" border="0" /></a>          
+      		</td>
+		</tr>
+	<?php } ?>
+	</tbody>
+</table>
+<div class="text-center" style="clear:both">
+	<?php echo $pagecode;?>
+  
+</div>
+</body>
+</html>

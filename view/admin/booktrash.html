@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title>图书列表</title>
+</head>
+<style>
+	#form-div{
+		background: #98b7be;
+		height: 2.4em;
+	}
+	td{
+		border:1px solid #eee;
+	}
+	table{
+		background: #fff;
+	}
+</style>
+<body style="background:#b5d6e3;">
+<h1 class="text-center">回收站列表</h1>
+<form method="post">
+<table class="table table-hover">
+	<thead>
+		<tr class="info">
+			<td>书名</td>
+			<td>编号</td>
+			<td>货号</td>			
+			<td>作者</td>
+			<td>出版日期</td>
+			<td>出版社</td>
+			<td>市场价</td>
+			<td>网站价</td>
+			<td>精品</td>
+			<td>热销</td>
+			<td>库存</td>
+			<td>操作</td>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach($booklist as $g) { ?>
+		<tr>
+			<td><?php echo $g['book_name'];?></td>
+			<td><?php echo $g['book_id'];?></td>
+			<td><?php echo $g['book_sn'];?></td>
+			<td><?php echo $g['author'];?></td>
+			<td><?php echo $g['pub_date'];?></td>
+			<td><?php echo $g['book_publish'];?></td>
+			<td><?php echo $g['market_price'];?></td>
+			<td><?php echo $g['shop_price'];?></td>
+			<td><?php echo $g['is_best'];?></td>
+			<td><?php echo $g['is_hot'];?></td>
+			<td><?php echo $g['book_number'];?></td>
+        	<td >      		    
+      			<a href="retrash.php?book_id=<?php echo $g['book_id'];?>"  title="回复商品"><img src="../view/admin/image/icon_trash.gif" width="16" height="16" border="0" /></a>          
+      		</td>
+		</tr>
+	<?php } ?>
+	</tbody>
+</table>
+</form>
+</body>
+</html>

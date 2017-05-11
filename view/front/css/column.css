@@ -1,0 +1,76 @@
+<style>
+  {}
+  /*logo大小*/
+  #logo >img{
+    width: 50px;
+    height: 50px;
+  }
+  /*logo位置*/
+  .navbar-brand{
+    padding-top:0px;
+    padding-left: 30px;
+  }
+  /*欢迎您*/
+  #wel{
+  	color: #eee;
+	  font-size: 5em;
+  }
+  #title{
+    padding-left: 6em;
+	  text-shadow: 1px 1px 0 #f96,-1px -1px 0 #f96;
+    float: left;
+  }
+  /*搜索框*/
+  #search{
+    float: left;
+    width: 60%;
+    padding:2em 5em;
+  }
+  /*关键字*/
+  #keywods{
+    font-size: 1.3em;
+    padding-top: 0.2em;
+    font-weight: bold;
+  }
+  #keywods>a:hover{
+    color: red;
+    text-decoration: none;
+  }
+  /*分类*/
+  #info{
+    float: left;
+    border:1px solid #999;
+    width: 25%;
+    overflow: hidden;
+  }
+  #main{
+    float: left;
+    width: 75%;
+  }
+  .lib_top{
+    background: #565662;
+    color: #fff;
+    font-size: 1.3em;
+    text-align: center;
+  }
+  #info>div>ul>li>a{
+    color: #170c19;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  #info>div>ul>li>a:hover{
+    color: red;
+    text-decoration: none;
+  }
+  #sortbar{
+
+    background: #eee;
+  }
+  .book{
+    padding-top: 1em;
+  }
+  #pagination{
+    background: #eee;
+  }
+
+ </style>

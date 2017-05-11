@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title>用户列表</title>
+<style>
+    td{
+      border:1px solid #eee;
+    }
+    table{
+    background: #fff;
+  }
+</style>
+</head>
+<body style="background:#b5d6e3;">
+<h1 class="text-center">用户列表</h1>
+<table class="table table-hover">
+    <thead>
+        <tr class="info">
+            <td width="20%">用户id</td>
+            <td width="20%">用户名</td>
+            <td width="30%">email</td>
+            <td width="30%">注册时间</td>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($userlist as $v) { ?>
+        <tr align="left" class="0" id="0_1" id = 'tr_4'>
+            <td align="left" class="first-cell" style = 'padding-left="1"'>
+                <a href="userinfo.php?user_id=<?php echo $v['user_id'];?>">
+                    <?php echo $v['user_id'];?></a>
+            </td>
+            <td><a href="userinfo.php?user_id=<?php echo $v['user_id'];?>">
+                <?php echo $v['username'];?></a>
+            </td>
+            <td><?php echo $v['email']; ?></td>
+            <td >         
+                <?php echo date('Y-m-d H:i:s',$v['regtime']);?>          
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+</body>
+</html>

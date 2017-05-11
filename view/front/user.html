@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../view/front/css/order.css">
+<title>个人中心</title>
+</head>
+
+<body data-spy="scroll" data-target="#myScrollspy">
+<!-- bar -->
+<nav class="navbar navbar-default ">
+    <div class="navbar-header">
+            <a class="navbar-brand"  id="logo" href="#">
+                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+            </a>
+        </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
+            <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a></li> 
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span>个人中心</a></li> 
+            <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li> 
+        </ul>
+    </div>
+</nav>  
+
+<!-- mian -->
+<div class="container">
+    <ul class="nav nav-tabs" id="nav">
+        <li  class="active"><a href="#person">个人资料</a></li>
+        <li><a href="#order">历史订单</a></li>
+        <li><a href="#mess">留言记录</a></li>
+  </ul>
+    <div class="tab-content" style="padding:10px">
+        <div id="person" class="tab-pane active fade in">
+            <form action="user.php" method="post">
+            <table class="table">
+                <tr>
+                    <td style="width:10%;font-weight:bold;">用户名</td>
+                    <td style="width:40%"><?php echo $info['username'];?></td>
+                    <td style="width:10%;font-weight:bold;">邮箱</td>
+                    <td style="width:40%"><?php echo $info['email'];?></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold;">密码</td>
+                    <td>********</td>
+                    <td style="font-weight:bold;">注册时间</td>
+                    <td><?php echo date('Y-m-d H:i:s',$info['regtime']);?></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div id="order" class="tab-pane fade">
+            <table class="table" >
+                <tr class="info">
+                   <td colspan="5" class="title">基本信息</td>
+                </tr>
+                <tr>
+                    <td width="30%">订单号</td>
+                    <td width="20%">收件人</td>
+                    <td width="25%">总金额</td>
+                    <td width="15%">时间</td>
+                    <td width="10%"></td>
+                </tr>
+                <?php foreach($infolist as $v) { ?>
+                <tr>
+                    <td><?php echo $v['order_sn'];?></td>
+                    <td><?php echo $v['reciver'];?></td>
+                    <td><?php echo $v['order_amount'];?></td>
+                    <td><?php echo date('Y-m-d H:i:s',$v['add_time'])?></td>
+                </tr>                           
+                <?php } ?>
+            </table>
+        </div>
+        <div id="mess" class="tab-pane fade text-center">
+            <table class="table">
+                <tr class="info">
+                    <td width="20%">书籍</td>
+                    <td width="20%">作者</td>                    
+                    <td width="40%">内容</td>
+                    <td width="20%">时间</td>
+                </tr>
+                <?php foreach ($messlist as $m){?> 
+                <tr>
+                    <td><a href="detail.php?book_id=<?php echo $m['book_id'];?>" target="_blank"><?php echo $m['book_name'];?></a></td>
+                    <td><?php echo $m['author'];?></td>
+                    <td><?php echo $m['content'];?></td>
+                    <td><?php echo date('Y-m-d H:i:s',$m['times']);?></td>
+                </tr>
+                <?php } ?>
+            </table>
+        </div>
+    </div>
+</div>
+
+<?php include(ROOT . 'view/footer.html'); ?> 
+
+
+
+</body>
+<script src="../lib/bootstrap/js/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script>
+//标签页
+    $('#nav a').on('click',function(e){
+      // 阻止默认行为
+      e.preventDefault();
+      $(this).tab('show');
+    });
+</script>
+</html>

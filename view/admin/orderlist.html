@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title>订单列表</title>
+<style>
+    td{
+      border:1px solid #eee;
+    }
+    table{
+    background: #fff;
+    }
+    a{
+        color:#002;
+        text-decoration: none;
+    }
+    a:hover{
+        color: red;
+    }
+    #form-div{
+        background: #98b7be;
+        height: 2.4em;
+    }
+</style>
+</head>
+<body style="background:#b5d6e3;">
+<h1 class="text-center">订单列表</h1>
+<div id="form-div">
+    <div style="float:left">
+    <form action="orderlist.php?sort=search" name="searchForm" method="post">
+        <img src="../view/admin/image/icon_search.gif" width="26" height="23" alt="搜索" />   
+        <select name="intro_type" onchange="window.location=this.value">
+            <option value="0">排序</option>
+            <option value="orderlist.php?sort=ts">下单时间升序</option>
+            <option value="orderlist.php">下单时间降续</option>
+            <option value="orderlist.php?sort=ms">订单总金额升序</option>
+            <option value="orderlist.php?sort=mj">订单总金额降续</option>
+        </select>     
+        关键字 
+        <input type="text" name="keyword" id="keyword" size="35" placeholder="输入商品货号用户名等相关信息快速搜索" />
+        <input type="submit" value=" 搜索" />
+    </form>
+    </div>
+    <div style="float:right;margin-right:3em;">共<span style="color:red"><?php echo $total;?></span>条纪录</div>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr class="info">
+            <td width="20%">订单号</td>
+            <td width="20%">用户</td>
+            <td width="40%">总金额</td>
+            <td width="20%">时间</td>
+        </tr>
+    </thead>
+    <tbody> 
+        <?php foreach($orderlist as $v) { ?>
+        <tr align="left" class="0" id="0_1" id = 'tr_4'>
+            <td align="left" class="first-cell" style = 'padding-left="1"'>
+                <a href="orderinfo.php?id=<?php echo $v['order_id'] ;?>" >
+                    <?php echo $v['order_sn'];?>
+                </a>
+            </td>
+            <td><a href="userinfo.php?user_id=<?php echo $v['user_id'];?>">
+                <?php echo $v['username'];?></a>
+            </td>
+            <td><?php echo $v['order_amount'];?></td>
+            <td >         
+            <?php echo date('Y-m-d H:i:s',$v['add_time']);?>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+
+</table>
+<div class="text-center"><?php echo $pagecode;?></div>
+</body>
+</html>

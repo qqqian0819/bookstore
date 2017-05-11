@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../view/front/css/detail.css">
+<title>商品详情</title>
+</head>
+<style>
+    .lib_top{
+        background: #565662;
+        color: #fff;
+        font-size: 1.3em;
+        text-align: center;
+    }
+    #history{
+        border:1px solid #999;
+        overflow: hidden;
+        height:18em;
+    }
+    #history a:hover{
+        text-decoration: none;
+        color:red;
+    }
+</style>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-default ">
+    <div class="navbar-header">
+            <a class="navbar-brand"  id="logo" href="#">
+                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+            </a>
+        </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
+            <?php 
+            if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
+            <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a></li> 
+            <li><a href="user.php"><span class="glyphicon glyphicon-user"></span>个人中心</a></li> 
+            <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+            <?php } else { ?> 
+            <li><a href="log_in.php"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
+            <li><a href="reg.php"><span class="glyphicon glyphicon-edit"></span> 注册</a></li>
+            <?php } ?>
+        </ul>
+    </div>
+</nav>  
+<!-- 书店及搜索 -->
+<div class="container">
+    <div id="title">
+	  <span id="wel">书店</span>
+    </div>
+    <div id="search">
+        <form>
+            <div class="input-group">
+                <input type="text" name="searchcontent" placeholder="输入书名作者等信息快速搜索"  class="form-control input-lg">
+                <div class="input-group-addon">
+                    <a href="#">
+                        <span class="glyphicon">
+                            <input id="btn" type="submit" name="search" value="搜索" style="border:0px;">
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div id="keywods">
+                &nbsp;&nbsp;热门关键字：
+                <a href="detail.php?book_id=1">我们仨</a>,&nbsp;&nbsp;
+                <a href="column.php?cat_id=1">文学</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=林徽因">林徽因</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=傻逼">傻逼</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=倩姐出版社">倩姐出版社</a>&nbsp;&nbsp;
+            </div>
+        </form>
+    </div>
+    <div style="clear:both;"></div>
+    <hr>
+</div>
+<!-- mian -->
+<div class="container">
+    <!-- 面包屑导航 -->
+    <div>
+        <ol class="breadcrumb">
+            &nbsp;&nbsp;&nbsp;&nbsp;当前位置：
+            <li><a href="index.php">首页</a></li>
+             <?php foreach($nav as $c) { ?>
+            <li><a href="column.php?cat_id=<?php echo $c['cat_id'];?>">
+                    <?php echo $c['cat_name'];?>                    
+                </a>
+            <?php } ?>
+            </li>
+            <li class="active"><?php echo $g['book_name'];?></li>
+        </ol>
+    </div>
+    <!-- 商品图片及信息 -->
+    <div>
+        <!-- 图片 -->
+        <div id="picture" style="width:40%">
+            <div class="text-center">
+                <img src="../<?php echo $g['book_img'];?>" alt="">
+            </div>
+        </div>
+        <!-- 细节 -->
+        <div id="details" style="width:45%;float:left">
+            <div id="name"><?php echo $g['book_name'];?></div>
+            <form method="post" action="cart.php?act=buy&book_id=<?php echo $g['book_id'];?>">        
+            <table>
+                <tr>
+                    <td class="des">作者:</td>
+                    <td><?php echo $g['author'];?></td>
+                </tr>
+                <tr>
+                    <td class="des">出版社:</td>
+                    <td><?php echo $g['book_publish'];?></td>
+                </tr>
+                <tr>
+                    <td class="des">出版日期:</td>
+                    <td><?php echo $g['pub_date'];?></td>
+                </tr>
+                <tr>
+                    <td class="des">书籍简介:</td>
+                    <td ><?php echo $g['book_brief'];?></td>
+                </tr>
+                <tr>
+                    <td class="des">市场价:</td>
+                    <td id="market">￥<?php echo $g['market_price'];?></td>
+                </tr>
+                <tr>
+                    <td class="des">本店价:</td>
+                    <td id="shop">￥<?php echo $g['shop_price'];?></td>
+                </tr>
+                <tr>
+                    <td class="des">库存</td>
+                    <td><?php echo $g['book_number'];?></td>
+                </tr>
+                <tr>
+                    <td class="des">数量:</td>
+                    <td><em class="jian btn btn-info" style="cursor:pointer">-</em>
+                        <input type="text" value="1" class="num" name="book_number" id="book_number" style="height:3em;width:3em" readonly="readonly"/>                    
+                        <em class="add btn btn-info" style="cursor:pointer">+</em>
+                    </td>
+                </tr>
+            </table>
+            
+            <div style="height:5em;background:#eee;margin-top:1em;">
+                <div style="float:left;padding:2em 2em;">
+                    商品总价：￥<input type="text" name="total" id="total" style="color:red;width:5em;" value="<?php echo $g['shop_price'];?>" readonly="readonly">
+                </div>
+                <div style="padding:2em;float:right">
+                    <?php 
+                    if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
+                    <button type="submit"><img src="../view/front/image/bnt_cat.gif" alt=""></button>
+                    
+                    <?php } else { ?> 
+                    <form action="log_in.php" method="post">
+                    <div class="modal fade" id="myModal">
+                    <!-- 窗口声明 -->
+                    <div class="modal-dialog modal-sm">
+                    <!-- 内容声明 -->
+                    <div class="modal-content">
+                    <!-- 头部声明 -->
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">未登录用户不能购买,请登录</h4>
+                    </div>
+                    <!-- 主体部分声明 -->
+                    <div class="modal-body">
+                    <!-- 流体栅格系统 -->
+                    <div class="container-fluid">
+                    <div class="row">
+                        <div>用户名:<input type="text" name="passwd"></div>
+                        <br>
+                        <div >密&nbsp;码：<input type="password" name="username"></div>
+                        <br>
+                        <div style="float:right">
+                            <input type="checkbox" id="remember" name="remember" value="1">记住密码
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- 脚部声明 -->
+                    <div class="modal-footer text-center">
+                        <a class="btn btn-default" href="reg.php">注册</a>
+                        <input type="hidden"  name="act" value="act_login">
+                        <input type="hidden" name="iden" value="user">
+                        <input class="btn btn-primary" value="登录" type="submit">
+                    </div>
+                    </div>
+                    </div>
+                    </div>              
+                    </form>
+                    <a id="btns">
+                    <img src="../view/front/image/bnt_cat.gif" alt="">
+
+                    <?php } ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 浏览历史 -->
+        <div style="float:right;width:15%" id="history">
+            <div class="lib_top">浏览历史</div>
+            <ul>
+                <?php foreach($his as $v) { ?>
+                <li>
+                    <a href="<?php echo substr($v,0,strrpos($v,'#'));?>" title="<?php echo substr($v,strrpos($v,'#')+1); ?>" >
+                    <?php echo mb_substr(substr($v,strrpos($v,'#')+1),0,7,'UTF-8'),'...'; ?>   
+                    </a>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+</div>
+<hr>
+    <!-- 评论 -->
+<div id="about"> 
+    <div class="row">
+        <div class="col-md-6  col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 ">
+            <ul class="nav nav-tabs" id="nav">
+                <li class="active"><a href="#mess_list">评论列表(<span style="color:red"><?php echo sizeof($messlist);?></span>)</a></li>
+                <li ><a href="#leav_mess">我要评论</a></li>               
+            </ul>
+            <div class="tab-content" style="padding:10px;color:#a5a5ad">                
+                <!-- 留言表 -->
+                <div class="tab-pane fade in active" id="mess_list" style="background:#eee;">
+                    <?php foreach ($messlist as $k => $m) { ?>
+                    <div>
+                        <div style="float:left">用户名:
+                            <span style="font-size:1.6em;color:#201223;">
+                            <?php echo $m['is_anonymous']==1?'匿名':$m['username'];  ?></span>
+                        </div>
+                        <div style="float:right">
+                            第<span style="color:red;font-size:1.2em"><?php echo sizeof($messlist)-$k;?></span>楼
+                        </div>
+                        <div style="clear:both"></div>
+                        <hr>
+                        <div id="message" style="margin-left:1px;text-indent:2em;overflow:hidden;">
+                            <?php echo $m['content'];?>
+                        </div>                    
+                        <div style="float:right;color:red;font-weight:bold">
+                            <?php echo date('Y-m-d H:i:s',$m['times']);?>
+                        </div>
+                        <hr style="border:0.5px solid #000">                        
+                    </div>
+                    <?php } ?>
+                </div>
+                <!-- 评论 -->
+                <div id="leav_mess" class="tab-pane  fade in">
+                    <form action="detail.php?book_id=<?php echo $g['book_id'];?>&act=add"  method="post" name="message" >
+                        <table>
+                            <tr>
+                                <td><textarea id="content" name="content"></textarea></td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <div style="float:right;font-size:1.5em;font-weight:bold;color:#000;margin-left:1em">
+                            <input type="checkbox" name="anonymous" value="1"> 匿名
+                        </div>
+                        <div style="float:right">
+                            <input type="submit" class="btn btn-info pull-right" value="确认添加" onClick="return check(message)"  <?php 
+                            if(!isset($_SESSION['username']) && empty($_SESSION['username'])) {
+                            echo ('disabled');}?> >
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include(ROOT . 'view/footer.html'); ?> 
+</body>
+<script src="../lib/bootstrap/js/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../lib/editor/ueditor.config.js"></script>
+<script type="text/javascript" src="../lib/editor/ueditor.all.min.js"></script>
+<script>
+// 数量加减
+$(document).ready(function(){
+    //加的效果
+    $(".add").click(function(){
+        var n=$(this).prev().val();
+        var num=parseInt(n)+1;
+        if(num==0){ return;}
+        $(this).prev().val(num);
+        document.getElementById('total').value=num* <?php echo $g['shop_price'];?>;
+    });
+    
+    //减的效果
+    $(".jian").click(function(){
+        var n=$(this).next().val();
+        var num=parseInt(n)-1;
+        if(num==0){ return}
+        $(this).next().val(num);
+        document.getElementById('total').value=num* <?php echo $g['shop_price'];?>;
+    });
+})
+// 标签页
+    $('#nav a').on('click',function(e){
+        // 阻止默认行为
+        e.preventDefault();
+        $(this).tab('show');
+    });
+    // 编辑器
+    var edit = new UE.ui.Editor({initialContent:'',initialFrameHeight:300, toolbars: [[
+            'fullscreen','emotion'
+        ]]});
+    edit.render("content");
+    // 模态框
+    $('#btns').on('click',function () {
+        $('#myModal').modal('show');
+     });
+     // 检测发布内容
+    function check(form){
+        if (form.content.value=="") {
+                alert("评论不能为空哟");
+                form.content.focus();
+                return false;
+        }
+    }
+</script>
+</html>

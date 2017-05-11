@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title>添加书籍</title>
+
+</head>
+<body style="background:#b5d6e3;">
+<h1 class="text-center">修改书籍信息</h1>
+<div style="background:#eee">
+<form  class="form-horizontal" role="form" enctype="multipart/form-data" action="bookeditAct.php" method="post">       
+    <div class="row">
+        <div class="col-md-6  col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 ">
+            <ul class="nav nav-tabs" id="nav">
+                <li class="active"><a href="#book">书籍信息</a></li>
+                <li><a href="#general">通用信息</a></li>
+                <li><a href="#detail">详细描述</a></li>
+            </ul>
+            <!-- 书籍信息 -->
+            <div class="tab-content" style="padding:10px;color:#504154">
+                <div id="book" class="tab-pane active fade in">
+                    <table>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">书名:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="book_name" id="book_name" value="<?php echo $bookinfo['book_name']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">作者:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="author" id="author" value="<?php echo $bookinfo['author']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">出版社:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  name="book_publish" id="book_publish" value="<?php echo $bookinfo['book_publish']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">出版日期:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="pub_date" id="pub_date" value="<?php echo $bookinfo['pub_date']; ?>" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">分类名称:</label>
+                            <div class="col-sm-10">
+                                <select name="cat_id" id="cat_id"  class="form-control">
+                                    <option value="0">顶级分类</option>
+                                    <?php foreach($catlist as $v) { ?>
+                                    <option value="<?php echo $v['cat_id'];?>"
+                                    <?php echo $v['cat_id'] == $catinfo['cat_id']?"selected":''?>>
+                                    <?php echo str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$v['lev']),$v['cat_name']; ?>
+                                    </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </table>
+                </div>
+                <!-- 通用信息 -->
+                <div id="general" class="tab-pane fade">
+                    <table>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">本店价:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="shop_price" id="shop_price" value="<?php echo $bookinfo['shop_price']; ?>" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">市场价:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="market_price" id="market_price"  value="<?php echo $bookinfo['market_price']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">库存数量:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="book_number" id="book_number" value="<?php echo $bookinfo['book_number']; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">加入推荐:</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" name="is_best" <?php echo $bookinfo['is_best']==1?"checked":'';?> > 精品 
+                                <input type="checkbox" name="is_hot" <?php echo $bookinfo['is_hot']==1?"checked":'';?>/> 热销
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place" class="col-sm-2 control-label">简单描述:</label>
+                            <div class="col-sm-10">
+                                <textarea name="book_brief" id="book_brief" class="form-control" cols="40" rows="3">
+                                <?php echo $bookinfo['book_brief']; ?>
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file" class="col-sm-2 control-label">上传图片:</label>
+                            <div class="col-sm-10">
+                                <input type="file" id="ori_img" name='ori_img'>
+                            </div>
+                        </div>
+                    </table>                   
+                </div>
+                <!-- 详细描述-->
+                <div id="detail" class="tab-pane fade">
+                    <table>
+                        <tr>
+                            <td><textarea id="goods_desc" name="book_desc">
+                                <?php echo $bookinfo['book_desc']; ?>
+                            </textarea></td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" class="btn btn-info pull-right" name="Publish" value="确认并修改"></input>
+                        </div>
+                    </div>
+                    <input type="hidden" name="book_id" value="<?php echo $bookinfo['book_id'];?>" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+</body>
+<script src="../lib/bootstrap/js/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../lib/editor/ueditor.config.js"></script>
+<script type="text/javascript" src="../lib/editor/ueditor.all.min.js"></script>
+<script type="text/javascript">
+    //标签页
+    $('#nav a').on('click',function(e){
+        // 阻止默认行为
+        e.preventDefault();
+        $(this).tab('show');
+    });
+    // 编辑器
+    var edit = new UE.ui.Editor({initialContent:'',initialFrameWidth:730,initialFrameHeight:300, toolbars: [[
+            'fullscreen', 'emotion'
+        ]]});
+    edit.render("goods_desc");
+</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<title>订单列表</title>
+<style>
+    td a{
+        color: #333;
+    }
+    td a:hover{
+        text-decoration: none;
+        color: red;
+    }
+    table> tr > td{
+        height: 3em;
+        overflow: hidden;
+    }
+</style>
+</head>
+<body style="background:#b5d6e3;">
+<h1>评论列表</h1>
+<div class="text-center"> 
+    <form action="messlist.php?act=search" method="post">
+        <select name="intro_type" onchange="window.location=this.value">
+            <option value="">排序</option>
+            <option value="messlist.php?sort=tj" <?php echo $_GET['sort']=='tj'?"selected":''?>>时间降序</option>
+            <option value="messlist.php?sort=ts" <?php echo $_GET['sort']=='ts'?"selected":''?>>时间升序</option>
+        </select> 
+        &nbsp;&nbsp;关键字：
+            <input type="text" placeholder="输入书籍名称用户名等信息快速搜索" name="keyword" style="width:20em">
+            <input type="submit" value="搜索">
+    </form>
+</div>
+<table class="table table-hover">
+    <tr class="info">
+        <td width="10%">用户</td>
+        <td width="25%">书籍</td>
+        <td width="30%">内容</td>
+        <td width="20%">邮箱</td>
+        <td width="15%">时间</td>
+    </tr>
+    <?php foreach ($allMess as $a){?>
+    <tr>
+        <td><a href="userinfo.php?user_id=<?php echo $a['user_id'];?>" title="<?php echo $a['username'];?>">
+            <?php echo mb_substr($a['username'],0,5,'UTF-8'),'...'; ?></a>
+        </td>
+        <td><a href="bookedit.php?book_id=<?php echo $a['book_id'];?>"  title=" <?php echo $a['book_name'];?>" >
+            <?php echo mb_substr($a['book_name'],0,8,'UTF-8'),'...'; ?></a>
+        </td>
+        <td>
+            <?php echo $a['content']; ?>
+        </td>
+        <td><?php echo $a['email'];?></td>
+        <td><?php echo date('Y-m-d H:i:s',$a['times']);?></td>
+    </tr>
+    <?php } ?>
+</table>
+<div class="text-center" style="font-size:1.5em;">
+    <?php echo $pagecode;?>
+</div>
+</body>
+</html>

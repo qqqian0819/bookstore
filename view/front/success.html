@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../view/front/css/order.css">
+<title>注册</title>
+</head>
+<style>
+   
+
+</style>
+<body>
+<!-- bar -->
+<!-- navbar -->
+<nav class="navbar navbar-default ">
+    <div class="navbar-header">
+            <a class="navbar-brand"  id="logo" href="#">
+                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+            </a>
+        </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
+            <?php 
+            if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
+            <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a></li> 
+            <li><a href="user.php"><span class="glyphicon glyphicon-user"></span>个人中心</a></li> 
+            <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+            <?php } else { ?> 
+            <li><a href="log_in.php"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
+            <li><a href="reg.php"><span class="glyphicon glyphicon-edit"></span> 注册</a></li>
+            <?php } ?>
+        </ul>
+    </div>
+</nav>
+
+<div class="text-center">
+    <p style="font-size:2em;">感谢您购买我们书店的书籍</p>
+    <p>请牢记您的订单号: <font style="color:red"><?php echo $order_sn;?></font></p>
+</div>
+
+
+<?php include(ROOT . 'view/footer.html'); ?> 
+
+
+</body>
+
+</html>

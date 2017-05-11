@@ -1,0 +1,82 @@
+<style>
+  {}
+  /*logo大小*/
+  #logo >img{
+    width: 50px;
+    height: 50px;
+  }
+  /*logo位置*/
+  .navbar-brand{
+    padding-top:0px;
+    padding-left: 30px;
+  }
+  /*欢迎您*/
+  #wel{
+  	color: #eee;
+	  font-size: 5em;
+  }
+  #title{
+    padding-left: 6em;
+	  text-shadow: 1px 1px 0 #f96,-1px -1px 0 #f96;
+    float: left;
+  }
+  /*搜索框*/
+  #search{
+    float: left;
+    width: 60%;
+    padding:2em 5em;
+  }
+  /*关键字*/
+  #keywods{
+    font-size: 1.3em;
+    padding-top: 0.2em;
+    font-weight: bold;
+  }
+  #keywods>a:hover{
+    color: red;
+    text-decoration: none;
+  }  
+  /*整个轮播图的大小*/
+  #myCarousel{
+    width: 65%;
+    float: left;
+  }
+  /*轮播图里的文字*/
+  .carousel-caption{
+    color: #000;
+  }
+  .info{
+
+    float: left;
+    border:1px solid #999;
+    margin-bottom: 5em;
+  }
+  .lib_top{
+    background: #565662;
+    color: #fff;
+    font-size: 1.3em;
+    text-align: center;
+  }
+  .new_book{
+    border: 1px solid #eee;
+    padding-top: 1em;
+  }
+  .new_word{
+    font-size: 3em;
+    font-weight: bold;
+    color: #999;
+    padding-left: 1em;
+  }
+  .more{
+    float: right;
+    padding-top: 1em;
+  }
+  .more> a,.caption> a{
+    color: #000;
+    text-decoration: none;
+  }
+  .more> a:hover , .caption> a:hover{
+    color: red;
+    text-decoration: none;
+  }
+</style>

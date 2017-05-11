@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../view/front/css/order.css">
+<title>结算</title>
+</head>
+
+<body>
+<!-- bar -->
+<nav class="navbar navbar-default ">
+    <div class="navbar-header">
+            <a class="navbar-brand"  id="logo" href="#">
+                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+            </a>
+        </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
+            <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a></li> 
+            <li><a href="user.php"><span class="glyphicon glyphicon-user"></span>个人中心</a></li> 
+            <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li> 
+            
+        </ul>
+    </div>
+</nav>  
+
+<!-- mian -->
+<form method="post" action="cart.php?act=done" name="order">
+<div class="container">
+    <!-- 结算列表 -->
+    <div id="shop_cart">
+        <!-- 商品列表 -->
+        <div>
+            <div class="word">商品列表</div>
+            <hr>
+            <table class="table table-hover">
+                <tr  style="background:#64a7af;">
+                    <td>书名</td>
+                    <td>作者</td>
+                    <td>单价</td>
+                    <td>数量</td>
+                    <td>小计</td>
+                </tr>
+                <?php foreach($items as $item) { ?>
+                <tr>
+                    <td id="cart_name">
+                        <a class="f6" target="_blank" href="detail.php?book_id=<?php echo $k; ?>">
+                            <?php echo $item['name'];?>
+                        </a>
+                    </td>
+                    <td><?php echo $item['author'];?></td>
+                    <td><?php echo $item['price'];?></td>
+                    <td><?php echo $item['num'];?></td>
+                    <td>￥<?php echo $item['price'] * $item['num'];?></td>
+                </tr>
+                <?php } ?>
+            </table>
+            <div style="background:#eee;height:4em;">
+                <div style="padding:1em 3em;float:left">
+                金额￥<span class="money"><?php echo $total;?></span>元，比市场价节约了￥<span class="money"><?php echo $discount;?></span>元(<span class="money"><?php echo $rate;?>%</span>)。
+            </div>
+                <div id='edit'>
+                    <a href="cart.php" title="修改订单">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- 收货人信息 -->
+        <div>
+            <div class="word" >收货人信息</div>
+            <hr>
+            
+                <table style="margin:0 auto;">
+                    <tr >
+                        <td class="des"><label for="reciver">收件人姓名*</label></td>
+                        <td ><input type="text" name="reciver" id="reciver" placeholder="最好请填写中文姓名" ></td>
+                    </tr>
+                    <tr>
+                        <td class="des"><label for="tel">电话*</label></td>
+                        <td><input type="text" name="tel" id="tel" placeholder="暂只支持大陆电话"></td>
+                    </tr>
+                    <tr>
+                        <td class="des"><label for="">邮箱</label></td>
+                        <td><input type="text" name="email" id="email" placeholder="请填写正确的邮箱"></td>
+                    </tr>
+                    <tr>
+                        <td class="des"><label for="site">详细地址*</label></td>
+                        <td><select name="site" id="site" >
+                                <option value="-1">请选择</option>
+                                <option value="0">大学城</option>
+                                <option value="1">沙坪坝区</option>
+                                <option value="2">南岸区</option>
+                                <option value="3">其它</option>
+                            </select>
+                            <select name="school" id="school"></select>
+                        </td>
+                    </tr>
+                </table>
+        </div>
+        <hr>
+        <!-- 支付方式 -->
+        <div>
+            <div class="word">支付方式</div>
+            <hr>
+            <table class="table table-hover table-bordered" >
+                <tr style="background:#64a7af;">
+                    <td></td>
+                    <td>支付方式</td>
+                    <td>说明</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="checkbox disabled">
+                            <label>
+                                <input type="checkbox" value="" disabled>
+                            </label>
+                        </div>
+                    </td>
+                    <td>网上支付</td>
+                    <td>本文网站暂不支持该功能。谢谢您的谅解。</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="1" name="pay" checked> 
+                            </label>                         
+                        </div>
+                    </td>
+                    <td>货到付款</td>
+                    <td>本网上书店暂时只支持重庆市范围内各大高校配送，谢谢您的谅解</td>
+                </tr>
+            </table>
+            
+        </div>
+    </div>
+    <!-- 订单提交 -->
+    <div class="text-center">
+        <input type="image" src="../view/front/image/bnt_subOrder.gif" onClick="return check(order)">
+        <input type="hidden" value="done" name="step">
+    </div>
+</div>
+</form>
+<?php include(ROOT . 'view/footer.html'); ?> 
+
+
+</body>
+<script src="../lib/bootstrap/js/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script>
+// 数量加减
+$(document).ready(function(){
+    //加的效果
+    $(".add").click(function(){
+        var n=$(this).prev().val();
+        var num=parseInt(n)+1;
+        if(num==0){ return;}
+        $(this).prev().val(num);
+    });
+    //减的效果
+    $(".jian").click(function(){
+        var n=$(this).next().val();
+        var num=parseInt(n)-1;
+        if(num==0){ return}
+        $(this).next().val(num);
+    });
+})
+
+
+// 联动菜单
+ var arr=[['重庆师范大学','重庆大学','重庆医科大学','重庆电子学院','重庆警察学院','四川美术学院'],['重庆大学老校区','重庆大学老校区'],['重庆邮电大学','重庆工商大学','重庆交通大学'],['西南政法大学','重庆三峡学院','长江师范大学'],'四川外语学院'];
+    var pro=document.getElementById('site')
+    pro.onclick=function () {
+        if (pro.value==-1) {
+            document.getElementById('school').innerHTML='';
+            return;//无此代码尽管document页面无变化,但会报错console。
+        }
+        var opt='';//每次重新选择先清空第二个菜单
+        for (var i = 0; i < arr[pro.value].length; i++) {
+            opt+='<option>'+arr[pro.value][i]+'</option>';
+            document.getElementById('school').innerHTML=opt;
+        }
+
+    }
+// 检测发布内容
+    function check(form){
+        
+
+        if (form.reciver.value==""||form.tel.value==""||form.email.value=="") {
+                alert("请完整填写配送信息！");
+                return false;
+        }
+        var str2=form.email.value;
+        var expression2=/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        var objexp2=new RegExp(expression2);
+       var str1=form.tel.value;
+        var expression1=/^13(\d{9})$|^18(\d{9})$|^15(\d{9})$|^14(\d{9})$|^17(\d{9})/;
+        var objexp1=new RegExp(expression1);
+        if(objexp1.test(str1)==!true){
+            alert("请输入正确的手机号码");
+            form.tel.focus();
+            return false;
+        }
+        if(objexp2.test(str2)==!true){
+            alert("请输入正确的邮箱");
+            form.email.focus();
+            return false;
+        }
+    }
+</script>
+</html>

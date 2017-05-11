@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../view/front/css/order.css">
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/htmleaf-demo.css">
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/jquery.eeyellow.Timeline.css" />
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap-float-label.css"/>
+<title>登录</title>
+</head>
+<style>
+    body{
+        background: #fff;
+    }
+</style>
+<body>
+<!-- bar -->
+<nav class="navbar navbar-default ">
+    <div class="navbar-header">
+            <a class="navbar-brand"  id="logo" href="#">
+                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+            </a>
+        </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
+            <li class="active"><a href="log_id.php"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
+            <li><a href="reg.php"><span class="glyphicon glyphicon-edit"></span> 注册</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- 登录框 -->
+<div style="margin-top:3em;">
+    <div class="htmleaf-container" id="contact">
+        <div class="form-container" >
+            <form class="well center-block" style="max-width: 35rem;" action="log_in.php" method="post" name="form1">
+                <legend class="text-center">登录</legend>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">用户名</span>
+                    <span class="has-float-label">
+                        <input class="form-control" name="username" type="text" placeholder="请填写正确的用户名" value="<?php echo $remuser; ?>" />
+                        <label for="name">name</label>
+                    </span>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">密码&nbsp;&nbsp;&nbsp;</span>
+                    <span class="has-float-label">
+                        <input class="form-control" name="passwd" type="password" placeholder="*******"  value="<?php echo $rempasswd; ?>"/>
+                        <label for="password">password</label>
+                    </span>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon">验证码</span>
+                    <span class="has-float-label">
+                        <input class="form-control" name="verification" id="verification" type="text" placeholder="4为验证码"/>
+                        <label for="verification">verification</label>
+                    </span>
+                </div>
+                <div class="text-center" style="margin-bottom:1em">
+                    <img src="../tool/cap.php" alt="">                     
+                    <a class="btn btn-sm" id="cap" >看不清换一张</a>
+                </div>
+                <div  style="float:left">
+                    <input type="radio" name="iden" value="user" checked="user">用户登录
+                    <input type="radio" name="iden" value="admin">管理员登录
+                    <span style="font-size:0.4em;">(管理员账号:admin密码:admin)方便戴老师检查</span>
+                </div>
+                <div style="float:right">
+                    <input type="checkbox" id="remember" name="remember" value="1">
+                    <label for="remember">记住密码</label>
+                </div>
+                <input type="hidden"  name="act" value="act_login">
+                <input class="btn btn-success btn-block"  type="submit" id="sub" value="登录">               
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php include(ROOT . 'view/footer.html'); ?> 
+
+</body>
+<script src="../lib/bootstrap/js/jquery.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script>
+     // submit
+    document.getElementById('sub').onmouseover=function(){
+        this.style.background='#fff';
+        this.style.color="green";
+    }
+    document.getElementById('sub').onmouseout=function(){
+        this.style.background='#98dda3';
+        this.style.color="#494a5f";
+    }
+    // 验证码
+    /*document.getElementsByTagName('button')[0].onclick=function(){
+        //如果不强制的改变地址。则因为缓存无法重新加载05.php
+        document.getElementsByTagName('img')[0].src='../../../html/shop/12-11/07.php?s='+Math.random();
+    }*/
+
+
+</script>
+</html>
+

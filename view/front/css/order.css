@@ -1,0 +1,74 @@
+<style>
+{}
+  /*logo大小*/
+  #logo >img{
+    width: 50px;
+    height: 50px;
+  }
+  /*logo位置*/
+  .navbar-brand{
+    padding-top:0px;
+    padding-left: 30px;
+  }
+  /*欢迎您*/
+  #wel{
+  	color: #eee;
+	  font-size: 5em;
+  }
+  #title{
+    padding-left: 6em;
+	  text-shadow: 1px 1px 0 #f96,-1px -1px 0 #f96;
+    float: left;
+  }
+  /*搜索框*/
+  #search{
+    float: left;
+    width: 60%;
+    padding:2em 5em;
+  }
+  /*关键字*/
+  #keywods{
+    font-size: 1.3em;
+    padding-top: 0.2em;
+    font-weight: bold;
+  }
+  #keywods>a:hover{
+    color: red;
+    text-decoration: none;
+  }
+  #cart_name>a:hover{
+  	color: red;
+  	text-decoration: none;
+  }
+  .money{
+  	color: red;
+  	font-size: 1.2em;
+  	font-weight: bold;
+  }
+ .word{
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #999;
+    padding-left: 1em;
+  }
+  #edit{
+  	float: right;
+  	padding:1em 2em ;
+  }
+  #edit>a{
+  	font-size: 1.2em;
+  	color: #000;
+  }
+  #edit>a:hover{
+  	font-size: 1.2em;
+  	color: red
+  }
+
+  .des{
+  	color: #000;
+    font-size: 1.2em;
+    text-align: right;
+    font-weight: bold;
+    padding:0.5em;
+  }
+</style>
