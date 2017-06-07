@@ -8,52 +8,56 @@
 <link rel="stylesheet" href="../view/front/css/index.css">
 <title>首页</title>
 </head>
-<style>
-    /*注意事项*/
-  .info a{
-    color:#333;
-  }
-  .info a:hover{
-    color: red;
-    text-decoration: none;
-  }
-  /*书*/
-  .name_book>a:hover{
-    color:red;
-    text-decoration: none;
-  }
-  .bookBor:hover{
-    border:0.5px solid #9c6c7f;
-  }
-</style>
+
 <body>
-<!-- bar -->
-<nav class="navbar navbar-default ">
+<nav class="navbar navbar-default">
     <div class="navbar-header">
-            <a class="navbar-brand"  id="logo" href="#">
-                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
-            </a>
-        </div>
-    <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+
+        </button>
+        <a class="navbar-brand" id="logo">
+            <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a href="index.php" class="nav-link"><span class="glyphicon glyphicon-home"></span> 书店首页</a>
+            </li>
             <?php 
             if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
-            <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a></li> 
-            <li><a href="user.php"><span class="glyphicon glyphicon-user"></span>个人中心</a></li> 
-            <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+            <li class="nav-item">
+                <a href="cart.php" class="nav-link"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a>
+            </li>
+            <li class="nav-item">
+                <a href="user.php" class="nav-link"><span class="glyphicon glyphicon-user"></span> 个人中心</a>
+            </li>
+            <li class="nav-item">
+                <a href="logout.php" class="nav-link"><span class="glyphicon glyphicon-log-out"></span>  退出</a>
+            </li>
             <?php } else { ?> 
-            <li><a href="log_in.php"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
-            <li><a href="reg.php"><span class="glyphicon glyphicon-edit"></span> 注册</a></li>
-            <?php } ?>
+            <li class="nav-item">
+                <a href="log_in.php" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> 登录</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"><span class="glyphicon glyphicon-edit"></span> 注册</a>
+            </li> 
+            <?php } ?>        
         </ul>
     </div>
 </nav> 
+
+
+
  <!--书店及搜索  -->
 <div  class="container">
     <!-- 书店 -->
-    <div id="title" >
-    	  <span id="wel">书店</span>
+    <div id="title">
+    	<span id="wel">书店</span>
     </div>
     <!-- 搜索框 -->
     <div id="search">
@@ -79,9 +83,13 @@
                 <a href="search.php?sort=search&keyword=傻逼">傻逼</a>,&nbsp;&nbsp;
                 <a href="search.php?sort=search&keyword=倩姐出版社">倩姐出版社</a>&nbsp;&nbsp;
             </div>
+           
         </form>
+        <hr>
     </div>
+
 </div>
+
 <!-- 轮播及最新消息-->
 <div class="container">
     <!-- 轮播图片及选择搜索框 -->
@@ -95,53 +103,25 @@
         <!-- 轮播的图片 -->
         <div class="carousel-inner">
             <div class="item active" style="background:#545672;">
-                <img style="width: 1242px;height: 544px;" src="../view/front/image/gundong1.jpg" alt="" class="center-block">
-                <div class="carousel-caption">
-                    <h3>书店</h3>
-                    <p>年轻人多读书</p>
-                </div>
+                <img src="../view/front/image/gundong1.jpg" alt="" class="center-block">
             </div>
             <div class="item" style="background:#545672;">
-                <img style="width: 1242px;height: 544px;" src="../view/front/image/gundong2.jpg" alt="" class="center-block">
-                <div class="carousel-caption">
-                    <h3>夜店</h3>
-                    <p>年轻少逛夜店</p>
-                </div>
+                <img src="../view/front/image/gundong2.jpg" alt="" class="center-block">
             </div>
             <div class="item" style="background:#545672;">
-                <img style="width: 1242px;height: 544px;" src="../view/front/image/gundong3.jpg" alt="" class="center-block">
-                <div class="carousel-caption">
-                    <h3>赚钱</h3>
-                    <p>年轻人要赚钱</p>
-                </div>
+                <img src="../view/front/image/gundong3.jpg" alt="" class="center-block">
             </div>
              <div class="item" style="background:#545672;">
-                <img style="width: 1242px;height: 544px;" src="../view/front/image/gundong4.jpg" alt="" class="center-block">
-                <div class="carousel-caption">
-                    <h3>涵养</h3>
-                    <p>多读书就好</p>
-                </div>
+                <img src="../view/front/image/gundong4.jpg" alt="" class="center-block">
             </div>
              <div class="item" style="background:#545672;">
-                <img style="width: 1242px;height: 544px;" src="../view/front/image/gundong5.jpg" alt="" class="center-block">
-                <div class="carousel-caption">
-                    <h3>人丑</h3>
-                    <p>还是要多读书</p>
-                </div>
+                <img src="../view/front/image/gundong5.jpg" alt="" class="center-block">
             </div>
              <div class="item" style="background:#545672;">
-                <img style="width: 1242px;height: 544px;" src="../view/front/image/gundong6.jpg" alt="" class="center-block">
-                <div class="carousel-caption">
-                    <h3>人美</h3>
-                    <p>依然要读书</p>
-                </div>
+                <img src="../view/front/image/gundong6.jpg" alt="" class="center-block">
             </div>
              <div class="item" style="background:#545672;">
-                <img style="width: 1242px;height: 544px;" src="../view/front/image/gundong7.jpg" alt="" class="center-block">
-                <div class="carousel-caption">
-                    <h3>倩倩倩的书店</h3>
-                    <p>欢迎购买</p>
-                </div>
+                <img src="../view/front/image/gundong7.jpg" alt="" class="center-block">>
             </div>
         </div>
         <!-- 轮播图片左右按钮 -->
@@ -152,46 +132,30 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a> 
     </div>
-    <!-- 通知最新消息 -->
+    <!-- 滚动公告 -->
     <div class='info' style="border-radius:0.5em;margin-left:1em;">
-        <div class="lib_top">注意事项</div>
+        <div class="lib_top">本店公告</div>
         <div> 
             <ul>
-                <li><a href="#">本网上书店暂时支持在重庆范围各大高校的配送</a></li>
-                <li><a href="#">入购物车的书籍退出登录之后无法保存</a></li>
-                <li><a href="#">未登录用户不能评论书籍</a></li>
-                <li><a href="#">本网站只支持货到付款</a></li>
-                <li><a href="#">请勿在本网站泄露身份证银行卡等重要信息</a></li>
-                <li><a href="#">您填写的邮箱电话等私人信息不会被公开</a></li>
-                <li><a href="#">如有问卷调查等活动我们会通过邮箱联系你</a></li>
-                <li><a href="#">我们的书籍保证正版</a></li>
-                <li><a href="#">一经售出若无质量问题概不退还</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- 最新消息 -->
-    <div class='info' style="border-radius:0.5em;margin-left:1em;">
-        <div class="lib_top">店主信息</div>
-        <div> 
-            <ul>
-                <li><a href="#">倩倩倩:大三狗一枚+女+开朗+肯于学习</a></li>
-                <li><a href="#">业余爱好：做饭+历史+旅游</a></li>
-                <li><a href="#">联系方式：见页脚。希望收到您的来信</a></li>
-                <li><a href="#">求职方向：php | 前端</a></li>                
-                <li><a href="#">期望地点:重庆 | 上海 | 深圳 | 成都 | 杭州</a></li>
-                <li><a href="#">技能:php+mysql+ajax+html+css+js+json</a></li>
-                <li><a href="#">框架：Thinkphp+Bootstrap+Jquery</a></li>
-                <li><a href="#">Redis+Mongodb+Sphinx都了解一点,没有项目经验</a></li>
-                <li><a href="#">熟悉http协议及sql查询语句</a></li>
-                <li><a href="#">操作系统：windows+linux(正在了解熟悉中)</a></li>
-                <li><a href="#">期望和您交朋友或成为同事</a></li>
+                <li>本网站属于个人学习网站不具有任何商业用途</li>
+                <li>请勿在本网站泄露身份证银行卡等重要信息</li>
+                <li>填写的邮箱电话等私人信息不会被公开</li>
+                <li>网站付款功能暂只支持货到付款</li>
+                <li>暂时只支持重庆各大高校配送</li>
+                <li>入购物车的书籍退出登录之后无法保存</li>
+                <li>店主:大三狗一枚+女+开朗+肯于学习</li>
+                <li>业余爱好：做饭+历史+旅游</li>
+                <li>联系方式：见页脚。希望收到您的来信</li>
+                <li>关于工作：见页脚。希望能给我个机会成为你的同事</li>
+                <li>新浪微博：一枚奋斗的girl</li>
+                <li>当您看见这个页面的时候非常感谢</li>
             </ul>
         </div>
     </div>
 </div>
 <hr>
-<!-- new -->
-<div class="container" style="height:500px">
+<!-- 新品 -->
+<div class="container">
     <div>
         <span class="new_word">精品</span>
         <span class="more"><a href="search.php?sort=best">查看更多 &gt;&gt;</a></span>
@@ -199,17 +163,17 @@
     <div class="new_book">
         <div class="row">
             <?php foreach($bestlist as $g) { ?>
-            <div class="col-md-3 col-sm-3 col-xs-12" id="detBook">
+            <div class="col-md-3 col-sm-3 col-xs-6 ">
                 <div class="thumbnail bookBor">
                     <a href="detail.php?book_id=<?php echo $g['book_id']; ?>">
                         <img src="../<?php echo $g['thumb_img'];?>" alt="<?php echo $g['book_name'];?>">
                     </a>
-                    <div style="margin-left:3em;" class="name_book">
+                    <div class="name_book">
                         <a title="<?php echo $g['book_name']; ?>" href="detail.php?book_id=<?php echo $g['book_id']; ?>">
                             <h4><?php echo mb_substr($g['book_name'],0,9,'UTF-8'),'...'; ?></h4>
                         </a> 
-                        <p>市场价:<span style="text-decoration:line-through;">￥<?php echo $g['market_price']; ?></span></p>
-                        <p>本店价:<span style="font-size:1.3em;color:red">￥<?php echo $g['shop_price']; ?></span></p>
+                        <p>市场价:<span class="market_price">￥<?php echo $g['market_price']; ?></span></p>
+                        <p>本店价:<span class="shop_price">￥<?php echo $g['shop_price']; ?></span></p>
                     </div>
                 </div>
             </div>
@@ -220,7 +184,7 @@
 </div>
 
 <!-- 热销 -->
-<div class="container" style="height:500px">
+<div class="container">
     <div>
         <span class="new_word">热销</span>
         <span class="more"><a href="search.php?sort=hot">查看更多 &gt;&gt;</a></span>
@@ -228,21 +192,21 @@
     <div class="new_book">
         <div class="row">
             <?php foreach($hotlist as $g) { ?>
-            <div class="col-md-3 col-sm-3 col-xs-5">
+            <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="thumbnail bookBor">
                     <a href="detail.php?book_id=<?php echo $g['book_id']; ?>">
                         <img src="../<?php echo $g['thumb_img'];?>" alt="<?php echo $g['book_name'];?>">
                     </a>
-                    <div style="margin-left:3em;" class="name_book">
+                    <div class="name_book">
                         <a title="<?php echo $g['book_name']; ?>" href="detail.php?book_id=<?php echo $g['book_id']; ?>">
                             <h4><?php echo mb_substr($g['book_name'],0,9,'UTF-8'),'...'; ?></h4>
                         </a> 
-                        <p>市场价:<span style="text-decoration:line-through;">￥<?php echo $g['market_price']; ?></span></p>
-                        <p>本店价:<span style="font-size:1.3em;color:red">￥<?php echo $g['shop_price']; ?></span></p>
+                        <p>市场价:<span class="market_price">￥<?php echo $g['market_price']; ?></span></p>
+                        <p>本店价:<span class="shop_price">￥<?php echo $g['shop_price']; ?></span></p>
                     </div>
                 </div>
             </div>
-            <?php } ?>
+            <?php } ?> 
         </div>
     </div>
     <hr>
@@ -257,17 +221,17 @@
     <div class="new_book">
         <div class="row" >
             <?php foreach($allist as $g) { ?>
-            <div class="col-md-3 col-sm-3 col-xs-5 " >
+            <div class="col-md-3 col-sm-3 col-xs-6 " >
                 <div class="thumbnail bookBor">
                     <a href="detail.php?book_id=<?php echo $g['book_id']; ?>">
                         <img src="../<?php echo $g['thumb_img'];?>" alt="<?php echo $g['book_name'];?>">
                     </a>
-                    <div style="margin-left:3em;" class="name_book">
+                    <div class="name_book">
                         <a title="<?php echo $g['book_name']; ?>" href="detail.php?book_id=<?php echo $g['book_id']; ?>">
                             <h4><?php echo mb_substr($g['book_name'],0,9,'UTF-8'),'...'; ?></h4>
                         </a> 
-                        <p>市场价:<span style="text-decoration:line-through;">￥<?php echo $g['market_price']; ?></span></p>
-                        <p>本店价:<span style="font-size:1.3em;color:red">￥<?php echo $g['shop_price']; ?></span></p>
+                        <p>市场价:<span class="market_price">￥<?php echo $g['market_price']; ?></span></p>
+                        <p>本店价:<span class="shop_price">￥<?php echo $g['shop_price']; ?></span></p>
                     </div>
                 </div>
             </div>
@@ -275,10 +239,9 @@
         </div>
     </div>
 </div>
+
 <?php include(ROOT . 'view/footer.html'); ?>
-</body>
-<script src="../lib/bootstrap/js/jquery.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+
 <script>
     // 轮播图
     $('#myCarousel').carousel({
@@ -286,5 +249,13 @@
         pause:'hover',//鼠标悬停停止播放移动继续播放
         wrap:'true',//默认true(循环播放).false(只播放一次)
     });
+
+    // 滚动公告
+    setInterval(function(){
+        // 赋值当前第一条到最后并删除当前第一条
+        ($('.info ul>:first').clone(true)).appendTo('.info ul');
+        $('.info ul>:first').remove();
+    },3000);
 </script>
+</body>
 </html>
