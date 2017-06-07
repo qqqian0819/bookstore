@@ -11,24 +11,32 @@
 <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap-float-label.css"/>
 <title>注册</title>
 </head>
-<style>
-    body{
-        background: #fff;
-    }
-</style>
-<body>
+<body style=" background: #fff;">
 <!-- bar -->
-<nav class="navbar navbar-default ">
+<nav class="navbar navbar-default">
     <div class="navbar-header">
-            <a class="navbar-brand"  id="logo" href="#">
-                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
-            </a>
-        </div>
-    <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
-            <li><a href="log_in.php"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
-            <li  class="active"><a href="reg.php"><span class="glyphicon glyphicon-edit"></span> 注册</a></li>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+
+        </button>
+        <a class="navbar-brand" id="logo">
+            <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a href="index.php" class="nav-link"><span class="glyphicon glyphicon-home"></span> 书店首页</a>
+            </li>
+            <li class="nav-item">
+                <a href="log_in.php" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> 登录</a>
+            </li>
+            <li class="nav-item active">
+                <a href="#" class="nav-link"><span class="glyphicon glyphicon-edit"></span> 注册</a>
+            </li>         
         </ul>
     </div>
 </nav>  
@@ -91,8 +99,6 @@
 
 
 </body>
-<script src="../lib/bootstrap/js/jquery.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
 <script>
      // submit
     document.getElementById('sub').onmouseover=function(){
