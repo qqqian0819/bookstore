@@ -50,7 +50,9 @@
     float: left;
     border:1px solid #999;
     margin-bottom: 5em;
+    border-radius:0.5em;margin-left:1em;
   }
+
   .lib_top{
     background: #565662;
     color: #fff;
@@ -79,4 +81,45 @@
     color: red;
     text-decoration: none;
   }
+
+
+  /*注意事项*/
+  .info li {cursor: pointer;}
+  .info li:hover{color:#f00;}
+  .info li:first-child{color:#f00;}
+  /*书*/
+  .name_book{/*下面字体*/
+
+    white-space:nowrap; /* 不换行 */
+    overflow:hidden;    /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+  }
+  .name_book>a:hover{
+    color:red;
+    text-decoration: none;
+  }
+  .name_book{margin-left:3em;}
+  .bookBor:hover{border:0.5px solid #9c6c7f;}
+  .shop_price{font-size:1.3em;color:red}/*本店价*/
+  .market_price{text-decoration:line-through;}/*市场价*/
+  .myCarousel img{width: 1242px;height: 544px;}
+
+  /*平板*/
+  @media(max-width: 960px){
+    #title,.info{display: none}/*个人信息 ,书店标题字样*/
+    #myCarousel,#search{width: 100%}/*轮播图，搜索区*/
+    .name_book{margin-left: 0.5em;}
+    .name_book h4{font-size: 1em;}
+
+  }
+
+  /*手机*/
+  @media (max-width: 480px) {
+    #keywods{display: none}
+    .input-group{position: absolute;left:10%;width: 80%;}
+    .input-lg{font-size: 0.5em;text-align: center;}/*input中的提示文字*/
+  }
+
+
+
 </style>
