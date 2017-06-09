@@ -37,14 +37,8 @@
     color: red;
     text-decoration: none;
   }
-  #picture{
-  	float: left;
-  	width: 30%;
-  }
-  #details{
-  	float:left;
-  	width: 40%;
-  }
+
+
   #name{
   	font-weight: bold;
   	font-size: 2.5em;
@@ -70,5 +64,53 @@
   	overflow: hidden;
   	color: #000;
   	
+  }
+      .lib_top{
+        background: #565662;
+        color: #fff;
+        font-size: 1.3em;
+        text-align: center;
+    }
+    #history{
+        border:1px solid #999;
+        overflow: hidden;
+        height:18em;
+        float:right;width:15%
+    }
+    #history a:hover{
+        text-decoration: none;
+        color:red;
+    }
+    #picture{
+        float: left;
+        width: 30%;
+    }
+    #details{
+        float:left;
+        width: 40%;
+    }
+    .total_price{float:left;padding:2em 2em;}
+    .put_cart{padding:2em;float:right}
+    /*平板*/
+  @media(max-width: 960px){
+    #title,.info{display: none}/*个人信息 ,书店标题字样*/
+   
+    #search{width: 100%}
+    #history{display: none}/*浏览历史*/
+    #picture{width: 50%;}/*书图片*/
+
+  }
+
+   /*手机*/
+  @media (max-width: 480px) {
+    #keywods{display: none}/*热门关键字*/
+    .input-group{position: absolute;left:10%;width: 80%;}
+    .input-lg{font-size: 0.5em;text-align: center;}/*input中的提示文字*/
+    #details{clear: both;width: 100%;}
+    .total_price{padding:2em 0.5em}
+    .put_cart{padding-top:1em;}
+
+    
+    
   }
 </style>
