@@ -66,11 +66,44 @@
 
     background: #eee;
   }
-  .book{
-    padding-top: 1em;
-  }
+
   #pagination{
     background: #eee;
+  }
+    /*书*/
+  .name_book>a:hover{
+    color:red;
+    text-decoration: none;
+  }
+  .bookBor:hover{
+    border:0.5px solid #9c6c7f;
+  }
+  .book{
+    padding-top: 1em;
+    float:left;width:100%
+  }
+    .shop_price{font-size:1.3em;color:red}/*本店价*/
+    .name_book{margin-left:3em;}
+    .total_book{float:right;padding:1em 2em}/*共多少本书*/
+  /*平板*/
+  @media(max-width: 960px){
+    #title,.info{display: none}/*个人信息 ,书店标题字样*/
+   
+    .name_book{margin-left: 0.5em;}/*总的书*/
+    .name_book h4{font-size: 1em;}
+    #search{width: 100%}
+    .total_book{padding:1em 0.5em;}/*共多少本书*/
+
+  }
+
+   /*手机*/
+  @media (max-width: 480px) {
+    #keywods{display: none}
+    .input-group{position: absolute;left:10%;width: 80%;}
+    .input-lg{font-size: 0.5em;text-align: center;}/*input中的提示文字*/
+    
+    #info,#sortbar{display: none;}
+    #main{width: 100%;}
   }
 
  </style>

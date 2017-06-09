@@ -8,68 +8,84 @@
 <link rel="stylesheet" href="../view/front/css/column.css">
 <title>栏目</title>
 </head>
-<style>
-     /*书*/
-  .name_book>a:hover{
-    color:red;
-    text-decoration: none;
-  }
-  .bookBor:hover{
-    border:0.5px solid #9c6c7f;
-  }
-</style>
 <body>
 <!-- navbar -->
-<nav class="navbar navbar-default ">
+<nav class="navbar navbar-default">
     <div class="navbar-header">
-            <a class="navbar-brand"  id="logo" href="#">
-                <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
-            </a>
-        </div>
-    <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> 书店首页
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+
+        </button>
+        <a class="navbar-brand" id="logo">
+            <img src="../view/front/image/logo.png" alt="logo" class="img-circle">
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a href="index.php" class="nav-link"><span class="glyphicon glyphicon-home"></span> 书店首页</a>
+            </li>
             <?php 
             if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
-            <li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a></li> 
-            <li><a href="user.php"><span class="glyphicon glyphicon-user"></span>个人中心</a></li> 
-            <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+            <li class="nav-item">
+                <a href="cart.php" class="nav-link"><span class="glyphicon glyphicon-shopping-cart"></span> 购物车</a>
+            </li>
+            <li class="nav-item">
+                <a href="user.php" class="nav-link"><span class="glyphicon glyphicon-user"></span> 个人中心</a>
+            </li>
+            <li class="nav-item">
+                <a href="logout.php" class="nav-link"><span class="glyphicon glyphicon-log-out"></span>  退出</a>
+            </li>
             <?php } else { ?> 
-            <li><a href="log_in.php"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
-            <li><a href="reg.php"><span class="glyphicon glyphicon-edit"></span> 注册</a></li>
-            <?php } ?>
+            <li class="nav-item">
+                <a href="log_in.php" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> 登录</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"><span class="glyphicon glyphicon-edit"></span> 注册</a>
+            </li> 
+            <?php } ?>        
         </ul>
     </div>
-</nav>  
+</nav>
 <!-- 书店及搜索 -->
-<div class="container">
+ <!--书店及搜索  -->
+<div  class="container">
+    <!-- 书店 -->
     <div id="title">
-	  <span id="wel">书店</span>
+        <span id="wel">书店</span>
     </div>
+    <!-- 搜索框 -->
     <div id="search">
         <form action="search.php?sort=search" method="post">
-            <div class="input-group">
-                <input type="text" name="keyword" placeholder="输入书名作者等信息快速搜索"  class="form-control input-lg">
-                <div class="input-group-addon">
-                    <a href="#">
-                        <span class="glyphicon">
-                            <input id="btn" type="submit" name="search" value="搜索" style="border:0px;">
-                        </span>
-                    </a>
+            <div id="">
+                <div class="input-group">
+                    <input type="text" name="keyword" placeholder="输入书名作者简介等相关信息快速搜索"  class="form-control input-lg">
+                    <div class="input-group-addon">
+                        <a href="#">
+                            <span class="glyphicon">
+                                <input id="btn" type="submit" name="search" value="搜索" style="border:0px;">
+                            </span>
+                        </a>
+                    </div>              
                 </div>
             </div>
+            <!-- 关键字 -->
             <div id="keywods">
-                    &nbsp;&nbsp;热门关键字：
-                    <a href="detail.php?book_id=1">我们仨</a>,&nbsp;&nbsp;
-                    <a href="column.php?cat_id=1">文学</a>,&nbsp;&nbsp;
-                    <a href="search.php?sort=search&keyword=林徽因">林徽因</a>,&nbsp;&nbsp;
-                    <a href="search.php?sort=search&keyword=傻逼">傻逼</a>,&nbsp;&nbsp;
-                    <a href="search.php?sort=search&keyword=倩姐出版社">倩姐出版社</a>&nbsp;&nbsp;
+                &nbsp;&nbsp;热门关键字：
+                <a href="detail.php?book_id=1">我们仨</a>,&nbsp;&nbsp;
+                <a href="column.php?cat_id=1">文学</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=林徽因">林徽因</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=傻逼">傻逼</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=倩姐出版社">倩姐出版社</a>&nbsp;&nbsp;
             </div>
+           
         </form>
+        <hr>
     </div>
-    <div style="clear:both;"></div>
-    <hr>
+
 </div>
 
 <!-- 分类 -->
@@ -138,12 +154,12 @@
                         </select></a>
                     </li>
                     </form>
-                    <div style="float:right;padding:1em 2em">共<span style="font-size:1.2em;color:red"><?php echo $total ;?></span>本相关</div>
+                    <div class="total_book">共<span style="font-size:1.2em;color:red"><?php echo $total ;?></span>本相关</div>
                 </ul>
             </div>
         </div>
         <!-- 具体书 -->
-        <div class="book container" style="float:left;width:100%" >
+        <div class="book container">
             <div class="row">
             <?php foreach($goodslist as $g) { ?>
                 <div class="col-md-4 col-sm-4 col-xs-5">
@@ -151,12 +167,12 @@
                         <a href="detail.php?book_id=<?php echo $g['book_id']; ?>">
                             <img src="../<?php echo $g['thumb_img'];?>" alt="<?php echo $g['book_name'];?>">
                         </a>
-                        <div style="margin-left:3em;">
+                        <div class="name_book">
                             <a title="<?php echo $g['book_name']; ?>" href="detail.php?book_id=<?php echo $g['book_id']; ?>">
                                 <h4><?php echo mb_substr($g['book_name'],0,7,'UTF-8'),'...'; ?></h4>
                             </a> 
-                            <p>市场价:<span style="text-decoration:line-through;">￥<?php echo $g['market_price']; ?></span></p>
-                            <p>本店价:<span style="font-size:1.3em;color:red">￥<?php echo $g['shop_price']; ?></span></p>
+                            <p>市场价:<span class="market_price">￥<?php echo $g['market_price']; ?></span></p>
+                            <p>本店价:<span class="shop_price">￥<?php echo $g['shop_price']; ?></span></p>
                         </div>
                     </div>
                 </div>
@@ -171,7 +187,5 @@
 
 <?php include(ROOT . 'view/footer.html'); ?>
 </body>
-<script src="../lib/bootstrap/js/jquery.min.js"></script>
-<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="../lib/laydate/laydate.js"></script>
+
 </html>
