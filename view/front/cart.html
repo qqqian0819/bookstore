@@ -47,11 +47,11 @@
             </div>
             <div id="keywods">
                 &nbsp;&nbsp;热门关键字：
-                <a href="#">追风筝的人</a>,&nbsp;&nbsp;
-                <a href="#">计算机</a>,&nbsp;&nbsp;
-                <a href="#">贾平凹</a>,&nbsp;&nbsp;
-                <a href="#">老舍</a>,&nbsp;&nbsp;
-                <a href="#">励志</a>&nbsp;&nbsp;
+                <a href="detail.php?book_id=1">我们仨</a>,&nbsp;&nbsp;
+                <a href="column.php?cat_id=1">文学</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=林徽因">林徽因</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=傻逼">傻逼</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=倩姐出版社">倩姐出版社</a>&nbsp;&nbsp;
             </div>
         </form>
     </div>
@@ -78,7 +78,7 @@
                 <td>小计</td>
                 <td>操作</td>
             </tr>
-            <?php foreach($items as $item) { ?>
+            <?php foreach($items as $k=>$item) { ?>
             <tr>
                 <td id="cart_name">
                     <a class="f6" target="_blank" href="detail.php?book_id=<?php echo $k; ?>">
@@ -86,11 +86,11 @@
                     </a>
                 </td>
                 <td><?php echo $item['author'];?></td>
-                <td><?php echo $item['price'];?></td>
+                <td>￥<?php echo $item['price'];?></td>
                 <td style="text-decoration:line-through; ">￥<?php echo $item['market_price'];?></td>
                 <td><?php echo $item['num'];?></td>
                 <td>￥<?php echo $item['num']*$item['price'];?></td>
-                <td><a href="" title="删除"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <td><a href="cart.php?book_id=<?php echo $k; ?>&act=delete" title="删除"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
             <?php } ?>
         </table>
