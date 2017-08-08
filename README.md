@@ -1,4 +1,4 @@
-# bookstore
+# Bookstore
 ##### 技术站
 PHP + MySql + JS + HTML + CSS 
 ##### 项目说明
