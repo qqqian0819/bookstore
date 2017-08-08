@@ -1,5 +1,6 @@
 <style>
   {}
+  *{padding: 0; margin: 0}
   /*logo大小*/
   #logo >img{
     width: 50px;
@@ -24,13 +25,22 @@
   #search{
     float: left;
     width: 60%;
-    padding:2em 5em;
+
+  }
+  /*搜索二字*/
+  #btn{
+    border:0px; 
+    padding: 0.6em 0.4em
   }
   /*热门关键字*/
   #keywods{
     font-size: 1.3em;
-    padding-top: 0.2em;
+    line-height: 3em;
     font-weight: bold;
+    line-height:3em;
+    border-bottom:
+    1px dotted #999;
+
   }
   #keywods>a:hover{
     color: red;
@@ -79,6 +89,7 @@
 
 
   /*注意事项*/
+  .info ul{padding:0.7em 2em;}
   .info li {cursor: pointer;}
   .info li:hover{color:#f00;}
   .info li:first-child{color:#f00;}
@@ -105,6 +116,7 @@
     #myCarousel,#search{width: 100%}/*轮播图，搜索区*/
     .name_book{margin-left: 0.5em;}
     .name_book h4{font-size: 1em;}
+    #search{padding-bottom: 0.2em;padding-top:0em;}
 
   }
 
@@ -113,6 +125,7 @@
     #keywods{display: none}
     .input-group{position: absolute;left:10%;width: 80%;}
     .input-lg{font-size: 0.5em;text-align: center;}/*input中的提示文字*/
+    #search{margin-bottom: 1.2em;padding-top:0em;}
   }
 
 

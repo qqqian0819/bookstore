@@ -44,7 +44,7 @@
                 <a href="log_in.php" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> 登录</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"><span class="glyphicon glyphicon-edit"></span> 注册</a>
+                <a href="reg.php" class="nav-link"><span class="glyphicon glyphicon-edit"></span> 注册</a>
             </li> 
             <?php } ?>        
         </ul>
@@ -68,7 +68,7 @@
                     <div class="input-group-addon">
                         <a href="#">
                             <span class="glyphicon">
-                                <input id="btn" type="submit" name="search" value="搜索" style="border:0px;">
+                                <input id="btn" type="submit" name="search" value="搜索">
                             </span>
                         </a>
                     </div>              
@@ -80,12 +80,11 @@
                 <a href="detail.php?book_id=1">我们仨</a>,&nbsp;&nbsp;
                 <a href="column.php?cat_id=1">文学</a>,&nbsp;&nbsp;
                 <a href="search.php?sort=search&keyword=林徽因">林徽因</a>,&nbsp;&nbsp;
-                <a href="search.php?sort=search&keyword=傻逼">傻逼</a>,&nbsp;&nbsp;
+                <a href="search.php?sort=search&keyword=傻逼">经济学原理</a>,&nbsp;&nbsp;
                 <a href="search.php?sort=search&keyword=倩姐出版社">倩姐出版社</a>&nbsp;&nbsp;
             </div>
            
         </form>
-        <hr>
     </div>
 
 </div>
@@ -137,20 +136,19 @@
         </a> 
     </div>
     <!-- 滚动公告 -->
-    <div class='info' style="border-radius:0.5em;margin-left:1em;">
+    <div class='info'>
         <div class="lib_top">本店公告</div>
         <div> 
             <ul>
-                <li>本网站属于个人学习网站不具有任何商业用途</li>
+                <li>本网站纯属于个人学习不具商业用途</li>
                 <li>请勿在本网站泄露身份证银行卡等重要信息</li>
                 <li>填写的邮箱电话等私人信息不会被公开</li>
-                <li>网站付款功能暂只支持货到付款</li>
-                <li>暂时只支持重庆各大高校配送</li>
-                <li>入购物车的书籍退出登录之后无法保存</li>
+                <li>写本项目时更侧重于PHP对前端有所忽视</li>
+                <li>本小“店长”目前想往前端发展</li>
+                <li>购物车用的session,退出登录之后无法保存</li>
                 <li>店主:大三狗一枚+女+开朗+肯于学习</li>
                 <li>业余爱好：做饭+历史+旅游</li>
-                <li>联系方式：见页脚。希望收到您的来信</li>
-                <li>关于工作：见页脚。希望能给我个机会成为你的同事</li>
+                <li>关于工作与联系方式：见页脚。</li>
                 <li>新浪微博：一枚奋斗的girl</li>
                 <li>当您看见这个页面的时候非常感谢</li>
             </ul>
@@ -158,8 +156,8 @@
     </div>
 </div>
 <hr>
-<!-- 新品 -->
-<div class="container">
+<!-- 精品 -->
+<div class="container" id="jingp">
     <div>
         <span class="new_word">精品</span>
         <span class="more"><a href="search.php?sort=best">查看更多 &gt;&gt;</a></span>

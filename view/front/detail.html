@@ -166,7 +166,7 @@
                     if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
                     
                         <button type="submit">
-                            <img src="../view/front/image/bnt_cat.gif" alt="">
+                            <img src="../view/front/image/bnt_cat.gif" style="padding-bottom:2em;" alt="">
                         </button>
                     </form>
                     <?php } else { ?> 
@@ -242,7 +242,7 @@
             </ul>
             <div class="tab-content" style="padding:10px;color:#a5a5ad">                
                 <!-- 留言表 -->
-                <div class="tab-pane fade in active" id="mess_list" style="background:#eee;">
+                <div class="tab-pane fade in active" id="mess_list" style="background:#eee;padding:1em;">
                     <?php foreach ($messlist as $k => $m) { ?>
                     <div>
                         <div style="float:left">用户名:
